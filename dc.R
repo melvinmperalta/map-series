@@ -10,10 +10,7 @@ library(osmdata)
 library(osmextract)
 library(scales)
 
-grid <- long_grid(x = seq(0, 1, length.out = 1000),
-                  y = seq(0, 1, length.out = 1000))
-
-#noise algorithms: https://blog.djnavarro.net/posts/2021-09-07_water-colours/
+#noise algorithms
 gensimplex <- function(points, frequency = .1, octaves = 1) {
   ambient::curl_noise(
     generator = ambient::fracture,
@@ -25,7 +22,8 @@ gensimplex <- function(points, frequency = .1, octaves = 1) {
     octaves = octaves,
     seed = 1,
   )
-}
+} 
+#source: https://blog.djnavarro.net/posts/2021-09-07_water-colours/
 
 genwaves <- function(points, frequency = .1, octaves = 1) {
   ambient::curl_noise(
@@ -62,7 +60,7 @@ genspheres <- function(points, frequency = .1, octaves = 1) {
     y = points$y,
     frequency = frequency,
     octaves = octaves,
-    seed = 123456
+    seed = 1
   )
 }
 
